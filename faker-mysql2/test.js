@@ -16,10 +16,14 @@ async function main() {
   // const [rows, fields] = await connection.execute(`delete from article`);
   // console.log(rows, fields)
 
+  console.time("계산시간은 얼마나 걸릴까?");
+
   for (let i=0; i<1000; i++) {
     const [rows, fields] = await connection.execute(`INSERT INTO article(title, content, created_at, updated_at ) VALUES ('title${i}', 'content${i}', NOW(6), NOW(3))`);
     console.log(rows, fields)
   }
+
+  console.timeEnd("계산시간은 얼마나 걸릴까?");
   
 
 //   await connection.execute(`INSERT INTO user VALUES (?, ?, ?, ?, ?, ?)`, [...userDetails]);
