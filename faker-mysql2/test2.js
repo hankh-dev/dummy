@@ -1,4 +1,5 @@
 const mysql = require("mysql2/promise");
+const { faker } = require('@faker-js/faker');
 let connection;
 let insertId;
 
@@ -22,15 +23,28 @@ const db = async () => {
   try {
     // insert data
     var values = [
-      ["demian", "demian@gmail.com", "now(6)", "now(3)"],
-      ["john", "john@gmail.com",  "now(6)", "now(3)"],
     ];
+
+    console.time("전체 계산시간은 얼마나 걸릴까?");
+
+    let dt = new Date()
+    for (let i=0; i<10000; i++) {
+      // values.push(["title"+i, "content"+i, dt.toISOString(), dt.toISOString()])
+      values.push([faker.lorem.sentence({ min: 1, max: 3 }), faker.lorem.sentences({ min: 1, max: 3 },'\n'), dt.toISOString(), dt.toISOString()])
+      dt.setMilliseconds(dt.getMilliseconds() + 1);
+    }
+
+    console.time("쿼리 계산시간은 얼마나 걸릴까?");
 
     // insert data into example table
     let [results] = await connection.query("INSERT INTO article(title, content, created_at, updated_at ) VALUES ?", [values]);
     // inserted data's id(auto_increment)
     insertId = results.insertId;
     console.log(results);
+
+    console.timeEnd("전체 계산시간은 얼마나 걸릴까?");
+    console.timeEnd("쿼리 계산시간은 얼마나 걸릴까?");
+
 
     // var sql = "INSERT INTO article(title, content, created_at, updated_at ) VALUES ?";
     // // var sql = "INSERT INTO Test (name, email, n) VALUES ?";

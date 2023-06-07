@@ -1,4 +1,5 @@
 const mysql = require('mysql2/promise');
+const { faker } = require('@faker-js/faker');
 
 (async function() {
   let pool = mysql.createPool({
@@ -9,11 +10,16 @@ const mysql = require('mysql2/promise');
     connectionLimit: 66
   });
 
+  console.log(pool);
+
+  console.log("testset");
+  
   console.time("계산시간은 얼마나 걸릴까?");
 
   for (let i=0; i<1000; i++) {
-    const [rows, fields] = await pool.query(`INSERT INTO article(title, content, created_at, updated_at ) VALUES ('title${i}', 'content${i}', NOW(6), NOW(3))`);
-    console.log(rows, fields)
+    
+    const [rows, fields] = await pool.query(`INSERT INTO article(title, content, created_at, updated_at ) VALUES ('${faker.lorem.sentence({ min: 1, max: 3 })}', '${faker.lorem.sentence({ min: 1, max: 3 })}', NOW(6), NOW(3))`);
+    // console.log(rows, fields)
   }
 
   console.timeEnd("계산시간은 얼마나 걸릴까?");
