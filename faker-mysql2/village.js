@@ -25,7 +25,7 @@ const db = async () => {
       // host: `localhost`, 
       user: "root",
       password: `${process.env.MARIADB_0412_PASS}`, 
-      database: "village4a",
+      database: "village4",
     });
 
     // Select all rows from example table
@@ -41,56 +41,56 @@ const db = async () => {
     ];
 
 
-    // console.time("user 등록시간은 얼마나 걸릴까?");
+    console.time("user 등록시간은 얼마나 걸릴까?");
 
-    // let dt = new Date()
-    // for (let i=0; i<500000; i++) {
-    //   // values.push(["title"+i, "content"+i, dt.toISOString(), dt.toISOString()])
-    //   // values.push([faker.lorem.sentence({ min: 1, max: 3 }), faker.lorem.sentences({ min: 1, max: 3 },'\n'), dt.toISOString(), dt.toISOString()])
-    //   // const email = faker.internet.email(); // 중복이 잘됨
-    //   // const email = randomEmail();          // 10만건 넘어가니 이것도..
-    //   const email = random(faker.helpers.rangeToNumber({ min: 10, max: 60 })) + '@' + random(faker.helpers.rangeToNumber({ min: 10, max: 50 })) + '.' + random(faker.helpers.rangeToNumber({ min: 3, max: 10 }));
+    let dt = new Date()
+    for (let i=0; i<1; i++) {
+      // values.push(["title"+i, "content"+i, dt.toISOString(), dt.toISOString()])
+      // values.push([faker.lorem.sentence({ min: 1, max: 3 }), faker.lorem.sentences({ min: 1, max: 3 },'\n'), dt.toISOString(), dt.toISOString()])
+      // const email = faker.internet.email(); // 중복이 잘됨
+      // const email = randomEmail();          // 10만건 넘어가니 이것도..
+      const email = random(faker.helpers.rangeToNumber({ min: 10, max: 60 })) + '@' + random(faker.helpers.rangeToNumber({ min: 10, max: 50 })) + '.' + random(faker.helpers.rangeToNumber({ min: 3, max: 10 }));
 
-    //   const lead_town = faker.helpers.rangeToNumber({ min: 1, max: 6 });
+      const lead_town = faker.helpers.rangeToNumber({ min: 1, max: 6 });
 
-    //   const town_1_arr = [faker.helpers.rangeToNumber({ min: 7, max: 11 }), null];
-    //   const town_1_index = Math.floor(Math.random() * town_1_arr.length);
-    //   const town_1 = town_1_arr[town_1_index];
-    //   // const town_1 = faker.helpers.rangeToNumber({ min: 7, max: 11 });
+      const town_1_arr = [faker.helpers.rangeToNumber({ min: 7, max: 11 }), null];
+      const town_1_index = Math.floor(Math.random() * town_1_arr.length);
+      const town_1 = town_1_arr[town_1_index];
+      // const town_1 = faker.helpers.rangeToNumber({ min: 7, max: 11 });
 
-    //   let town_2 = null;
-    //   if (town_1!=null) {
-    //     const town_2_arr = [faker.helpers.rangeToNumber({ min: 12, max: 16 }), null];
-    //     const town_2_index = Math.floor(Math.random() * town_2_arr.length);
-    //     town_2 = town_2_arr[town_2_index];
-    //   }
+      let town_2 = null;
+      if (town_1!=null) {
+        const town_2_arr = [faker.helpers.rangeToNumber({ min: 12, max: 16 }), null];
+        const town_2_index = Math.floor(Math.random() * town_2_arr.length);
+        town_2 = town_2_arr[town_2_index];
+      }
 
-    //   let town_3 = null;
-    //   if (town_2!=null) {
-    //     const town_3_arr = [faker.helpers.rangeToNumber({ min: 12, max: 16 }), null];
-    //     const town_3_index = Math.floor(Math.random() * town_3_arr.length);
-    //     town_3 = town_3_arr[town_3_index];
-    //   }
+      let town_3 = null;
+      if (town_2!=null) {
+        const town_3_arr = [faker.helpers.rangeToNumber({ min: 12, max: 16 }), null];
+        const town_3_index = Math.floor(Math.random() * town_3_arr.length);
+        town_3 = town_3_arr[town_3_index];
+      }
 
-    //   let town_4 = null;
-    //   if (town_3!=null) {
-    //     const town_4_arr = [faker.helpers.rangeToNumber({ min: 12, max: 16 }), null];
-    //     const town_4_index = Math.floor(Math.random() * town_4_arr.length);
-    //     town_4 = town_4_arr[town_4_index];
-    //   }
+      let town_4 = null;
+      if (town_3!=null) {
+        const town_4_arr = [faker.helpers.rangeToNumber({ min: 12, max: 16 }), null];
+        const town_4_index = Math.floor(Math.random() * town_4_arr.length);
+        town_4 = town_4_arr[town_4_index];
+      }
 
-    //   values.push([faker.string.alphanumeric(70), email, email, lead_town, faker.string.alphanumeric(100), faker.person.lastName('male'), faker.string.alphanumeric(100), faker.string.alphanumeric(70), faker.helpers.arrayElement(['Google', 'Naver', 'Kakao']), faker.string.alphanumeric(30), town_1, town_2, town_3, town_4])
-    //   // dt.setMilliseconds(dt.getMilliseconds() + 1);
-    //   // console.log('town_1:',town_1, 'town_2:',town_2, 'town_3:',town_3, 'town_4:',town_4);
-    // }
+      values.push([faker.string.alphanumeric(70), email, email, lead_town, faker.string.alphanumeric(100), faker.person.lastName('male'), faker.string.alphanumeric(100), faker.string.alphanumeric(70), faker.helpers.arrayElement(['Google', 'Naver', 'Kakao']), faker.string.alphanumeric(30), town_1, town_2, town_3, town_4])
+      // dt.setMilliseconds(dt.getMilliseconds() + 1);
+      // console.log('town_1:',town_1, 'town_2:',town_2, 'town_3:',town_3, 'town_4:',town_4);
+    }
 
-    // // // insert data into example table
-    // let [results] = await connection.query("insert into user(ci_value, email, id_email, lead_town, name, nick_name, phone_num, refresh_token, sns_name, sns_type, town_1, town_2, town_3, town_4) VALUES ?", [values]);
-    // // // inserted data's id(auto_increment)
-    // // insertId = results.insertId;
-    // console.log(results);
+    // // insert data into example table
+    let [results] = await connection.query("insert into user(ci_value, email, id_email, lead_town, name, nick_name, phone_num, refresh_token, sns_name, sns_type, town_1, town_2, town_3, town_4) VALUES ?", [values]);
+    // // inserted data's id(auto_increment)
+    // insertId = results.insertId;
+    console.log(results);
     
-    // console.timeEnd("user 등록시간은 얼마나 걸릴까?");
+    console.timeEnd("user 등록시간은 얼마나 걸릴까?");
 
 
 
@@ -187,18 +187,18 @@ const db = async () => {
 
 
 
-    console.time("town 등록시간은 얼마나 걸릴까?");
+    // console.time("town 등록시간은 얼마나 걸릴까?");
 
-    let dt = new Date()
-    for (let i=0; i<3000; i++) {
-      values.push([faker.string.alphanumeric(10)])
-    }
+    // let dt = new Date()
+    // for (let i=0; i<3000; i++) {
+    //   values.push([faker.string.alphanumeric(10)])
+    // }
 
-    let [results] = await connection.query("insert into town(town_name) VALUES ?", [values]);
-    // insertId = results.insertId;
-    console.log(results);
+    // let [results] = await connection.query("insert into town(town_name) VALUES ?", [values]);
+    // // insertId = results.insertId;
+    // console.log(results);
     
-    console.timeEnd("town 등록시간은 얼마나 걸릴까?");
+    // console.timeEnd("town 등록시간은 얼마나 걸릴까?");
 
 
 
